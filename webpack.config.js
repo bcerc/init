@@ -8,7 +8,7 @@ module.exports = {
   entry: {
     app: './src/js/index.js',
   },
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     host: '0.0.0.0',
@@ -27,6 +27,7 @@ module.exports = {
       hash: false,
       template: 'src/html/index.html',
     }),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -34,5 +35,23 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]!postcss-loader'},
+      {test: /\.json$/, loaders: ['json-loader']},
+    ],
+  },
+  resolve: {
+    modules: [
+      'node_modules',
+      path.join(__dirname, 'src/js'),
+      path.join(__dirname, 'src/css'),
+    ],
   },
 }
