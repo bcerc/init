@@ -1,0 +1,91 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "classes": true
+    }
+  },
+  "extends": [
+    "standard",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "newline-after-var": [
+      "error",
+      "always"
+    ],
+    "no-unused-expressions": 0,
+    "indent": [
+      "error",
+      2
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }
+    ],
+    "space-before-function-paren": [
+      "error",
+      "always"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "never"
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "multiline": false,
+          "consistent": true
+        },
+        "ObjectPattern": {
+          "multiline": false,
+          "consistent": true
+        }
+      }
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "time",
+          "timeEnd",
+          "table",
+          "log"
+        ]
+      }
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "spaced-comment": [
+      "error",
+      "always"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ]
+  }
+}
