@@ -41,6 +41,10 @@
       "error",
       "never"
     ],
+    "array-bracket-spacing": [
+      "error",
+      "never"
+    ],
     "object-curly-newline": [
       "error",
       {
@@ -86,6 +90,32 @@
     "jsx-quotes": [
       "error",
       "prefer-single"
+    ],
+    "key-spacing": [
+      "error",
+      {
+        "afterColon": true
+      }
+    ],
+    "comma-spacing": [
+      "error"
+    ],
+    "space-infix-ops": [
+      "error",
+      {
+        "int32Hint": false
+      }
+    ],
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    "no-multi-spaces": [
+      "error"
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
     ]
   }
 }

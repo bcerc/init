@@ -14,7 +14,9 @@
   },
   "author": "blacktoooth",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "^7.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
