@@ -1,10 +1,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const __DEV__ = process.env.NODE_ENV !== 'production'
 
 module.exports = {
+  mode: __DEV__ ? 'development' : 'production',
   entry: {
     app: './src/js/index.js',
   },
@@ -18,7 +19,13 @@ module.exports = {
     stats: {colors: true},
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new webpack.DefinePlugin({
+      __DEV__,
+    }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['dist/**/*.*'],
+      verbose: false,
+    }),
     new HtmlWebpackPlugin({
       title: 'App',
       filename: 'index.html',
@@ -37,11 +44,11 @@ module.exports = {
     publicPath: '/',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
       },
       {test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]!postcss-loader'},
       {test: /\.json$/, loaders: ['json-loader']},
