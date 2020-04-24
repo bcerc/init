@@ -51,7 +51,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /src\/\.ts(x?)$/,
+        test: /\.ts(x?)$/,
         exclude: /node_modules/,
         use: [
           {

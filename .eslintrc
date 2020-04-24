@@ -1,5 +1,6 @@
 {
-  "parser": "babel-eslint",
+  "root": true,
+  "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true,
     "node": true
@@ -9,9 +10,14 @@
       "classes": true
     }
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "extends": [
     "standard",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
     "newline-after-var": [
@@ -21,7 +27,10 @@
     "no-unused-expressions": 0,
     "prefer-const": [
       "error",
-      2
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
     ],
     "indent": [
       "error",

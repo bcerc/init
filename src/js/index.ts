@@ -1,3 +1,3 @@
-let world = 'world'
+const world = 'world'
 
 console.log('hello' + world)
