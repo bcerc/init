@@ -19,6 +19,10 @@
       "always"
     ],
     "no-unused-expressions": 0,
+    "prefer-const": [
+      "error",
+      2
+    ],
     "indent": [
       "error",
       2

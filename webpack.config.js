@@ -1,13 +1,14 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const PrettierPlugin = require('prettier-webpack-plugin')
 const webpack = require('webpack')
 const __DEV__ = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   mode: __DEV__ ? 'development' : 'production',
   entry: {
-    app: './src/js/index.js',
+    app: './src/js/index.ts',
   },
   devtool: 'eval-source-map',
   devServer: {
@@ -34,6 +35,13 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new PrettierPlugin({
+      semi: false,
+      singleQuote: true,
+      jsxSingleQuote: true,
+      arrowParens: 'avoid',
+      parser: 'babel-ts',
+    }),
   ],
   output: {
     filename: '[name].js',
@@ -42,6 +50,18 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /src\/\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'ts-loader',
+          },
+        ],
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
