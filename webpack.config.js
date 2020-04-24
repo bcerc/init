@@ -29,10 +29,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'App',
       filename: 'index.html',
-      inject: false,
-      xhtml: true,
-      hash: false,
-      template: 'src/html/index.html',
+      template: 'src/index.ejs',
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
