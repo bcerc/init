@@ -69,7 +69,6 @@
     "postcss-nested": "^4.1.2",
     "postcss-reporter": "^6.0.1",
     "postcss-url": "^8.0.0",
-    "prettier-webpack-plugin": "^1.2.0",
     "pug": "^2.0.0-rc.4",
     "style-loader": "^1.0.0",
     "stylelint": "^13.3.3",

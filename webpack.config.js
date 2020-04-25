@@ -1,7 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const PrettierPlugin = require('prettier-webpack-plugin')
 const webpack = require('webpack')
 const __DEV__ = process.env.NODE_ENV !== 'production'
 
@@ -35,13 +34,6 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new PrettierPlugin({
-      semi: false,
-      singleQuote: true,
-      jsxSingleQuote: true,
-      arrowParens: 'avoid',
-      parser: 'babel-ts',
-    }),
   ],
   output: {
     filename: '[name].js',
