@@ -54,11 +54,6 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
-      },
       {test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]!postcss-loader'},
       {test: /\.json$/, loaders: ['json-loader']},
     ],
@@ -67,7 +62,7 @@ module.exports = {
     modules: [
       'node_modules',
       path.join(__dirname, 'src/js'),
-      path.join(__dirname, 'src/css'),
     ],
+    extensions: ['.ts', '.js', '.json']
   },
 }
