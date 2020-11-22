@@ -7,12 +7,12 @@ const __DEV__ = process.env.NODE_ENV !== 'production'
 module.exports = {
   mode: __DEV__ ? 'development' : 'production',
   entry: {
-    app: './src/js/index.ts',
+    app: './src/index.ts',
   },
   devtool: 'eval-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    host: '0.0.0.0',
+    contentBase: path.join(__dirname, 'dist'),
+    // host: '0.0.0.0',
     hot: true,
     publicPath: '/',
     port: 8080,
@@ -32,7 +32,6 @@ module.exports = {
       template: 'src/index.ejs',
     }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
@@ -54,14 +53,39 @@ module.exports = {
           },
         ],
       },
-      {test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]!postcss-loader'},
-      {test: /\.json$/, loaders: ['json-loader']},
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]-[local]',
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          },
+        ]
+      },
+      {
+        test: /\.json$/,
+        use: [
+          {
+            loader: 'json-loader'
+          }
+        ]
+      },
     ],
   },
   resolve: {
     modules: [
       'node_modules',
-      path.join(__dirname, 'src/js'),
+      path.join(__dirname, 'src'),
     ],
     extensions: ['.ts', '.js', '.json']
   },

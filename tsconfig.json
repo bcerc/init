@@ -17,7 +17,6 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "jsx": "preserve",
-
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
